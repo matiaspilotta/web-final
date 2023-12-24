@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Tus encabezados y enlaces aquí -->
+</head>
+<body>
+    <h2>Panel de Administración</h2>
+
+    <h3>Posts:</h3>
+    <ul>
+        {% for post in posts %}
+            <li>
+                {{ post.title }} - <a href="{% url 'admin_delete_post' post.id %}">Borrar</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Comentarios:</h3>
+    <ul>
+        {% for comment in comments %}
+            <li>
+                {{ comment.content }} - <a href="{% url 'admin_delete_comment' comment.id %}">Borrar</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Usuarios:</h3>
+    <ul>
+        {% for usuario in usuarios %}
+            <li>
+                {{ usuario.username }} - <a href="{% url 'admin_delete_user' usuario.id %}">Borrar</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

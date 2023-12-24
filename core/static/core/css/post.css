@@ -1,0 +1,27 @@
+body {
+  font-family: 'OtraFuente', sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+  background-color: #333; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  padding: 15px; /* Espaciado interno */
+}
+
+.navbar a {
+  color: #fff; /* Color del texto enlaces */
+  text-decoration: none; /* Sin subrayado */
+  padding: 10px; /* Espaciado interno */
+  margin: 0 10px; /* Márgenes */
+  transition: color 0.3s; /* Transición de color */
+}
+
+.navbar a:hover {
+  color: #bbb; /* Color del texto en hover */
+}
+
+/* Resto de tus estilos... */

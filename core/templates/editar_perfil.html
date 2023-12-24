@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <style>
+        /* Estilo general para los formularios */
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        /* Estilo para los campos del formulario */
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        /* Estilo para los botones de envío */
+        .submit-button {
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Estilo específico para el formulario de avatar */
+        .avatar-form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="avatar-container">
+        <img src="{{ avatar_url }}" alt="Avatar" class="avatar">
+      </div>
+      
+<!-- Formulario de datos del usuario -->
+<form class="user-profile-form" action="{% url 'editar_perfil' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Guardar" class="submit-button">
+</form>
+
+
+<form class="avatar-form" action="{% url 'editar_perfil' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ avatar_form.as_p }}
+    <input type="submit" value="Guardar Avatar" class="submit-button">
+</form>
+
+</body>
+</html>
