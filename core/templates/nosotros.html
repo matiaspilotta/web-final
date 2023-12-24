@@ -1,41 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block nav %}
+    {% include 'nav.html' %}
+{% endblock  %}
 
 {% block content %}
 
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="base.html">Blog-P1weR</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                <ul>
-                    <li><a href="{% url 'home' %}">Inicio</a></li>
-                    {% if user.is_authenticated %}
-                    <div class="avatar-container">
-                        <img src="{{ avatar_url }}" alt="Avatar" class="avatar">
-                      </div>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'upload_post' %}">Cargar Post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'logout' %}">Cerrar Sesión</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'editar_perfil' %}">Editar Perfil</a></li>
-                        <!-- Agrega el bloque de código para mostrar la imagen del avatar -->
-                        {% if avatar_url %}
-                            <li class="nav-item">
-                                <img src="{{ avatar_url }}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </li>
-                        {% endif %}
-                    {% else %}
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'admin/dashboard/' %}">Panel de administracion</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'login' %}">Iniciar Sesión</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'register' %}">Registrarse</a></li>
-                    {% endif %}
-                </ul>
-            </ul>
-        </div>
-    </div>
-</nav>
+
+
 <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -44,22 +17,18 @@
                     <h1>Bienvenido a P1weR Blog</h1>
                     <span class="subheading">
                         
-
-
                         <p>
                             En P1weR Blog, exploramos el fascinante mundo que nos rodea con una mirada fresca y curiosa. 
                             Desde temas de actualidad hasta historias inspiradoras, nuestro objetivo es brindarte contenido diverso y atractivo que informe, entretenga y despierte tu interés.
-
+                            
                             Nuestro equipo de apasionados escritores y expertos aborda una amplia variedad de temas, desde ciencia y tecnología hasta cultura y estilo de vida. 
                             Nos esforzamos por ofrecerte artículos que te hagan reflexionar, descubrir algo nuevo y, sobre todo, disfrutar de la experiencia de aprendizaje.
-
+                            
                             Explora con nosotros mientras compartimos historias intrigantes, consejos prácticos, entrevistas fascinantes y mucho más. 
                             P1weR Blog es tu destino para mantenerte informado, inspirado y conectado con el mundo que te rodea.
-
+                            
                             ¡Gracias por unirte a nuestra comunidad! Estamos emocionados de compartir este viaje contigo.
                         </p>
-
-
                     </span>
                 </div>
             </div>
@@ -68,3 +37,8 @@
 </header>
 
 {% endblock %}
+
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock  %}

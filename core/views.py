@@ -17,17 +17,22 @@ from .forms import CommentForm
 
 
 
+from django.conf import settings
+
+
 def home(request):
     avatar_url = ""
-    
+
     if request.user.is_authenticated:
         usuario = request.user
         avatar = Avatar.objects.filter(user=usuario).last()
-        
+
         if avatar and avatar.imagen:
-            avatar_url = avatar.imagen.url
+            media_url = settings.MEDIA_URL  # Obtener la URL base para archivos multimedia desde la configuración
+            avatar_url = f"{media_url}media/avatares{avatar.imagen.name}"
 
     return render(request, "home.html", context={"avatar_url": avatar_url})
+
 
 
 def nosotros(request):
@@ -88,7 +93,6 @@ def upload_post(request):
 
 
 
-
 @login_required
 def add_comment(request, post_id):
     post = Post.objects.get(pk=post_id)
@@ -103,6 +107,8 @@ def add_comment(request, post_id):
         else:
             messages.error(request, 'Hubo un error al agregar tu comentario.')
     return redirect("post")
+
+
 
 
 
@@ -214,25 +220,28 @@ def editar_perfil(request):
     )
 
 
+
 @login_required
 def crear_avatar(request):
-
     usuario = request.user
 
     if request.method == "GET":
         formulario = AvatarFormulario()
         return render(
             request,
-            "core/crear_avatar.html",
+            "crear_avatar.html",
             context={"form": formulario, "usuario": usuario}
         )
     else:
         formulario = AvatarFormulario(request.POST, request.FILES)
         if formulario.is_valid():
             informacion = formulario.cleaned_data
-            modelo = Avatar(user=usuario, imagen=informacion["imagen"])
-            modelo.save()
-            return redirect("core:inicio")
+            avatar, created = Avatar.objects.get_or_create(user=usuario, defaults={'imagen': informacion["imagen"]})
+            if not created:
+                avatar.imagen = informacion["imagen"]
+                avatar.save()
+            return redirect("mi_cuenta")
+
 
 
 def mi_cuenta(request):

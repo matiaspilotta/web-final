@@ -1,0 +1,65 @@
+body {
+  font-family: 'OtraFuente', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+  position: fixed; /* Barra de navegación fija en la parte superior */
+  width: 100%;
+  z-index: 1000; /* Para que esté por encima de otros elementos */
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  transition: background-color 0.3s; /* Transición de color de fondo */
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #bbb;
+}
+
+/* Estilos para el contenido del encabezado */
+header.masthead {
+  background-image: url('//project/core/static/core/assets/img/home-bg.jpg');
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding: 100px 0;
+}
+
+header .site-heading h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+header .site-heading .subheading {
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+/* Estilos para el pie de página */
+footer.border-top {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  color: #bbb;
+}

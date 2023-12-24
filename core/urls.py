@@ -31,7 +31,7 @@ urlpatterns = [
     path('logout/', user_logout, name='logout'),
     path('login/', user_login, name='login'),
     path('register/', register, name='register'),
-    path("crear-avatar/", crear_avatar, name="crear-avatar"),
+    path("crear_avatar/", crear_avatar, name="crear_avatar"),
     path("editar_perfil/", editar_perfil, name="editar_perfil"),
     path("perfil/", perfil, name="perfil"),
     path("mi_cuenta/", mi_cuenta, name="mi_cuenta"),
@@ -45,5 +45,7 @@ urlpatterns = [
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

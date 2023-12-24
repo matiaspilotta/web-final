@@ -1,74 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<style>
-    #mainNav {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 1030;
-        border-bottom: 1px solid #dee2e6;
-        background-color: #fff;
-        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    }
 
-    #mainNav .navbar-brand,
-    #mainNav .navbar-toggler,
-    #mainNav .navbar-nav > li.nav-item > a.nav-link {
-        color: #fff;
-    }
-
-    @media (min-width: 992px) {
-        #mainNav {
-            border-bottom: 1px solid transparent;
-            background: transparent;
-        }
-
-        #mainNav .navbar-brand,
-        #mainNav .navbar-nav > li.nav-item > a.nav-link {
-            color: #fff;
-        }
-
-        #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover,
-        #mainNav .navbar-nav > li.nav-item > a.nav-link:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
-            color: rgba(255, 255, 255, 0.8);
-        }
-    }
-</style>
-
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="{% url 'home' %}">Blog-P1weR</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Inicio</a></li>
-                {% if user.is_authenticated %}
-                    <p>Avatar URL: {{ avatar_url }}</p>
-                {% if avatar_url %}
-                    <img src="{{ avatar_url }}" alt="Avatar">
-                {% endif %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'perfil' %}">Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'editar_perfil' %}">Editar Perfil</a></li>
-                {% else %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registrarse</a></li>
-                {% endif %}
-
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<div class="container mt-4">
-    <h2>Editar Perfil</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-    </form>
+<div class="avatar-container">
+    {% if avatar_url %}
+        <img src="{{ MEDIA_URL }}avatares/{{ avatar_url }}" alt="Avatar" class="avatar">
+    {% endif %}
 </div>
+
+{% block content %}
+
+        <div class="container mt-4">
+            <h2>Editar Perfil</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </form>
+        </div>
+{% endblock %}

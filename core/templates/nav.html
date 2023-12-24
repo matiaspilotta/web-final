@@ -1,36 +1,35 @@
-
-
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="base.html">Blog-P1weR</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                <ul>
-                    <li><a href="{% url 'home' %}">Inicio</a></li>
-                    {% if user.is_authenticated %}
-                    <div class="avatar-container">
-                        <img src="{{ avatar_url }}" alt="Avatar" class="avatar">
-                      </div>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'upload_post' %}">Cargar Post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'logout' %}">Cerrar Sesión</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'editar_perfil' %}">Editar Perfil</a></li>
-                        <!-- Agrega el bloque de código para mostrar la imagen del avatar -->
-                        {% if avatar_url %}
-                            <li class="nav-item">
-                                <img src="{{ avatar_url }}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%;">
-                            </li>
+ <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="base.html">Blog-P1weR</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <ul>
+                        {% if user.is_authenticated %}
+                            <div class="avatar-container">
+                            <img src="{{ avatar_url }}" alt="Avatar" class="avatar" >
+                            </div>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'home' %}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'post' %}">Publicaciones</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'upload_post' %}">Cargar Post</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'editar_perfil' %}">Editar Perfil</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'contactos' %}">Contactos</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'nosotros' %}">Nosotros</a></li>
+                            {% if avatar_url %}
+                                <li class="nav-item">
+                                    <img src="{{ avatar_url }}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%;">
+                                </li>
+                            {% endif %}
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'home' %}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'contactos' %}">Contactos</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'nosotros' %}">Nosotros</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'login' %}">Iniciar Sesión</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'register' %}">Registrarse</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'admin_dashboard' %}">Panel de administracion</a></li>
                         {% endif %}
-                    {% else %}
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'admin/dashboard/' %}">Panel de administracion</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'login' %}">Iniciar Sesión</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'register' %}">Registrarse</a></li>
-                    {% endif %}
+                    </ul>
                 </ul>
-            </ul>
+            </div>
         </div>
-    </div>
-</nav>
+

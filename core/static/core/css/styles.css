@@ -10813,3 +10813,18 @@ header.masthead .post-heading .meta a {
   margin: 10px; /* Margen alrededor del avatar */
   overflow: hidden; /* Evita que la imagen sobresalga si el tamaño es diferente */
 }
+
+.avatar-container {
+  position: relative;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+/* Agregar sombra al avatar si lo deseas */
+.avatar:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}

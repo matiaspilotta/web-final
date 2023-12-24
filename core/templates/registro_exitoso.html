@@ -12,6 +12,7 @@
         </div>
         <div class="modal-body">
           ¡Tu registro ha sido exitoso!
+          <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'home' %}">Inicio</a></li>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -20,7 +21,7 @@
     </div>
   </div>
 
-  <!-- Abrir modal automáticamente al cargar la página -->
+ 
   <script>
     $(document).ready(function () {
       $('#myModal').modal('show');
